@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+int findLcm(int n1,int n2){
+  int Max=n1>n2?n1:n2;
+  int lcm;
+  while(true){
+    if(Max%n1==0 && Max%n2==0){
+         lcm=Max;
+        break;
+    }
+    else{
+        Max++;
+    }
+  }
+  return lcm;
+}
+int main(void){
+     int arr[5]={2,6,7,3,3};
+     int ans=arr[0];
+     for(int i=1;i<5;i++){
+        ans=findLcm(ans,arr[i]);
+     }
+     cout<<ans<<endl;
+}

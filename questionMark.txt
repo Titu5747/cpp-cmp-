@@ -1,0 +1,68 @@
+Questions Marks
+Have the function QuestionsMarks(str) take the str string parameter, which will 
+contain single digit numbers, letters, and question marks, and check if there are
+exactly 3 question marks between every pair of two numbers that add up to 10. 
+If so, then your program should return the string true, otherwise it should 
+return the string false. If there aren't any two numbers that add up to 10 
+in the string, then your program should return false as well.
+
+For example: if str is "arrb6???4xxbl5???eee5" then your program should return true 
+because there are exactly 3 question marks between 6 and 4, and 3 question marks 
+between 5 and 5 at the end of the string.
+Examples
+Input: "aa6?9"
+Output: false
+Input: "acc?7??sss?3rr1??????5"
+Output: true
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string QuestionsMarks(string str) {
+  int index = 0;
+    int firstNum = -1;
+    int firstNumIndex = -1;
+    int questionMarkCounter = 0;
+    string return_string = "false";
+    string temp = "";
+    string between = "";
+
+    while(index < str.length()){
+        if(str.at(index) > '0' && str.at(index) <= '9'){
+            if(firstNum == -1){
+                firstNum = stoi(temp + str.at(index));
+                firstNumIndex = index;
+            }
+            else{
+                if(firstNum + stoi(temp + str.at(index)) == 10){
+                    between = str.substr(firstNumIndex, index);
+                    for(int i = 1; i < between.length(); i++){
+                        if(between.at(i) == '?')
+                            questionMarkCounter++;
+                    }
+                    if(questionMarkCounter == 3)
+                        return_string = "true";
+                    else
+                        return_string = "false";
+                }
+                firstNum = -1;
+                firstNumIndex = -1;
+                questionMarkCounter = 0;
+            }
+        }
+        temp = "";
+        index++;
+    }
+
+    return return_string;
+}
+
+int main(void) {
+
+  // keep this function call here
+  cout << QuestionsMarks("acc?7??sss?3rr1??????");
+  return 0;
+
+}

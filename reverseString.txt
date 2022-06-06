@@ -1,0 +1,28 @@
+First Reverse
+Have the function FirstReverse(str) take the str parameter being passed and return the string in reversed order. For example: if the input string is "Hello World and Coders" then your program should return the string sredoC dna dlroW olleH.
+Examples
+Input: "coderbyte"
+Output: etybredoc
+Input: "I Love Code"
+Output: edoC evoL I
+
+
+
+#include <iostream>
+#include <string>
+#include<cstring>
+using namespace std;
+
+string FirstReverse(string str) {
+  
+  string s=string(str.crbegin(),str.crend());
+  return s;
+}
+
+int main(void) { 
+   
+  // keep this function call here
+  cout << FirstReverse(coderbyteInternalStdinFunction(stdin));
+  return 0;
+    
+}
